@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
 
   final List newsList = List.generate(
-    5,
+    7,
     (index) => Container(
       width: double.infinity,
       // Make the container take the full width
