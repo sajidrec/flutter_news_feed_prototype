@@ -57,6 +57,7 @@ class MyApp extends StatelessWidget {
               );
             } else {
               return GridView.builder(
+                itemCount: 10,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2),
                 itemBuilder: (context, index) {
