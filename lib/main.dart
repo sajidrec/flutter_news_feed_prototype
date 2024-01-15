@@ -9,14 +9,36 @@ class NewsFeed extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       home: MyApp(),
     );
   }
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+
+  final List newsList = List.generate(
+    5,
+    (index) => Container(
+      width: double.infinity,
+      // Make the container take the full width
+      padding: const EdgeInsets.all(8.0),
+      child: const Card(
+        surfaceTintColor: Colors.white,
+        elevation: 2,
+        child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 5),
+            child: Center(
+              child: SizedBox(
+                height: 150,
+                width: 150,
+                child: ColoredBox(color: Colors.grey),
+              ),
+            )),
+      ),
+    ),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -33,52 +55,18 @@ class MyApp extends StatelessWidget {
           builder: (context, orientation) {
             if (orientation == Orientation.portrait) {
               return ListView.builder(
-                itemCount: 10,
+                itemCount: newsList.length,
                 itemBuilder: (context, index) {
-                  return Container(
-                    width: double.infinity,
-                    // Make the container take the full width
-                    padding: const EdgeInsets.all(8.0),
-                    child: const Card(
-                      surfaceTintColor: Colors.white,
-                      elevation: 2,
-                      child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 5),
-                          child: Center(
-                            child: SizedBox(
-                              height: 150,
-                              width: 150,
-                              child: ColoredBox(color: Colors.grey),
-                            ),
-                          )),
-                    ),
-                  );
+                  return newsList[index];
                 },
               );
             } else {
               return GridView.builder(
-                itemCount: 10,
+                itemCount: newsList.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2),
                 itemBuilder: (context, index) {
-                  return Container(
-                    width: double.infinity,
-                    // Make the container take the full width
-                    padding: const EdgeInsets.all(8.0),
-                    child: const Card(
-                      surfaceTintColor: Colors.white,
-                      elevation: 2,
-                      child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 5),
-                          child: Center(
-                            child: SizedBox(
-                              height: 150,
-                              width: 150,
-                              child: ColoredBox(color: Colors.grey),
-                            ),
-                          )),
-                    ),
-                  );
+                  return newsList[index];
                 },
               );
             }
